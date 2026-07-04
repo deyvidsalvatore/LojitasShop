@@ -1,0 +1,12 @@
+package com.capgemini.deyvidsilva.lojitas.domain.usecase
+
+import com.capgemini.deyvidsilva.lojitas.data.repository.LojitasRepository
+import com.capgemini.deyvidsilva.lojitas.domain.entity.Produto
+
+class PesquisarProdutoUseCase(
+    private val repository: LojitasRepository
+) {
+    operator fun invoke(query: String): List<Produto> {
+        return repository.buscarProdutosPorNome(query);
+    }
+}
