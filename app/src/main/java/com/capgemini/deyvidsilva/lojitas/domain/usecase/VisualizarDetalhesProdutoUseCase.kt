@@ -6,7 +6,7 @@ import com.capgemini.deyvidsilva.lojitas.domain.entity.Produto
 class VisualizarDetalhesProdutoUseCase(
     private val repository: LojitasRepository
 ) {
-    operator fun invoke(): List<Produto> {
-        return repository.obterTodosProdutos();
+    operator fun invoke(id: String): Produto? {
+        return repository.obterProdutoPorId(id);
     }
 }
