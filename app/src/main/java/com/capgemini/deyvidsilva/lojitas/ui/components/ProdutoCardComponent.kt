@@ -22,10 +22,11 @@ import com.capgemini.deyvidsilva.lojitas.domain.entity.Produto
 @Composable
 fun ProdutoCardComponent(
     produto: Produto,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(8.dp)
             .clickable { onClick() },
@@ -61,7 +62,7 @@ fun ProdutoCardComponent(
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "R$ String.format(\"%.2f\", produto.preco)",
+                text = "R$ ${String.format("%.2f", produto.preco)}",
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold

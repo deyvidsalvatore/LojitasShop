@@ -6,6 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.capgemini.deyvidsilva.lojitas.ui.screens.SplashScreen
+import com.capgemini.deyvidsilva.lojitas.ui.screens.home.HomeScreen
 
 @Composable
 fun LojitasNavGraph(navController: NavHostController) {
@@ -16,11 +18,11 @@ fun LojitasNavGraph(navController: NavHostController) {
     ) {
 
         composable(route = Routes.SPLASH) {
-            // SplashScreen(navController = navController)
+            SplashScreen(navController = navController)
         }
 
         composable(route = Routes.HOME) {
-            // HomeScreen(navController = navController)
+            HomeScreen(navController = navController)
         }
 
         composable(
