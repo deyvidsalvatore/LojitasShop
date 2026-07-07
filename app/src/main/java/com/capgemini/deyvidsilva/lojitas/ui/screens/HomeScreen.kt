@@ -45,7 +45,10 @@ import com.capgemini.deyvidsilva.lojitas.ui.components.TopBarComponent
 import kotlinx.coroutines.launch
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(
+    navController: NavController,
+    onCartClick: () -> Unit
+) {
     val repository = remember { LojitasRepositoryImpl() }
     val visualizarProdutosUseCase = remember { VisualizarProdutosUseCase(repository) }
 
@@ -67,7 +70,7 @@ fun HomeScreen(navController: NavController) {
                 canNavigateBack = false,
                 showCartAction = true,
                 showLogo = true,
-                onCartClick = { }
+                onCartClick = onCartClick
             )
         },
         bottomBar = {

@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.capgemini.deyvidsilva.lojitas.data.repository.impl.LojitasRepositoryImpl
+import com.capgemini.deyvidsilva.lojitas.domain.entity.Produto
 import com.capgemini.deyvidsilva.lojitas.domain.usecase.VisualizarDetalhesProdutoUseCase
 import com.capgemini.deyvidsilva.lojitas.ui.components.ButtonComponent
 import com.capgemini.deyvidsilva.lojitas.ui.components.EmptyStateComponent
@@ -33,7 +34,9 @@ import com.capgemini.deyvidsilva.lojitas.ui.components.TopBarComponent
 @Composable
 fun DetailsScreen(
     navController: NavController,
-    productId: String
+    productId: String,
+    onCartClick: () -> Unit,
+    onAddToCart: (Produto) -> Unit
 ) {
     val repository = remember { LojitasRepositoryImpl() }
     val detalhesUseCase = remember { VisualizarDetalhesProdutoUseCase(repository) }
@@ -47,7 +50,7 @@ fun DetailsScreen(
                 canNavigateBack = true,
                 onNavigateBack = { navController.popBackStack() },
                 showCartAction = true,
-                onCartClick = { /* Futuro modal de carrinho */ }
+                onCartClick = { onCartClick() }
             )
         },
 
@@ -62,7 +65,8 @@ fun DetailsScreen(
                     ButtonComponent(
                         text = "Adicionar ao Carrinho - R$ ${String.format("%.2f", produto.preco)}",
                         onClick = {
-
+                            onAddToCart(produto)
+                            onCartClick()
                         }
                     )
                 }

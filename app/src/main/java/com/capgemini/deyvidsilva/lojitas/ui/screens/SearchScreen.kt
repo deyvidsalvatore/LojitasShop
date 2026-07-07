@@ -27,7 +27,8 @@ import com.capgemini.deyvidsilva.lojitas.ui.components.TopBarComponent
 @Composable
 fun SearchScreen(
     navController: NavController,
-    initialQuery: String
+    initialQuery: String,
+    onCartClick: () -> Unit
 ) {
     val repository = remember { LojitasRepositoryImpl() }
     val pesquisarProdutoUseCase = remember { PesquisarProdutoUseCase(repository) }
@@ -45,7 +46,7 @@ fun SearchScreen(
                 canNavigateBack = true,
                 onNavigateBack = { navController.popBackStack() },
                 showCartAction = true,
-                onCartClick = { /* Futuro modal de carrinho */ }
+                onCartClick = onCartClick
             )
         }
     ) { paddingValues ->
