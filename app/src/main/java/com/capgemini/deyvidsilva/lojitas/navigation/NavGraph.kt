@@ -6,6 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.capgemini.deyvidsilva.lojitas.ui.screens.DetailsScreen
+import com.capgemini.deyvidsilva.lojitas.ui.screens.SearchScreen
 import com.capgemini.deyvidsilva.lojitas.ui.screens.SplashScreen
 import com.capgemini.deyvidsilva.lojitas.ui.screens.home.HomeScreen
 
@@ -27,26 +29,18 @@ fun LojitasNavGraph(navController: NavHostController) {
 
         composable(
             route = Routes.SEARCH,
-            arguments = listOf(
-                navArgument(Arguments.SEARCH_QUERY) {
-                    type = NavType.StringType
-                }
-            )
+            arguments = listOf(navArgument(Arguments.SEARCH_QUERY) { type = NavType.StringType })
         ) { backStackEntry ->
             val query = backStackEntry.arguments?.getString(Arguments.SEARCH_QUERY) ?: ""
-            // SearchScreen(navController = navController, query = query)
+            SearchScreen(navController = navController, initialQuery = query)
         }
 
         composable(
             route = Routes.DETAILS,
-            arguments = listOf(
-                navArgument(Arguments.PRODUCT_ID) {
-                    type = NavType.StringType
-                }
-            )
+            arguments = listOf(navArgument(Arguments.PRODUCT_ID) { type = NavType.StringType })
         ) { backStackEntry ->
             val productId = backStackEntry.arguments?.getString(Arguments.PRODUCT_ID) ?: ""
-            // DetailsScreen(navController = navController, productId = productId)
+            DetailsScreen(navController = navController, productId = productId)
         }
 
         composable(route = Routes.CHECKOUT) {
