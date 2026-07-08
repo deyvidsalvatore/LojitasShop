@@ -3,6 +3,7 @@ package com.capgemini.deyvidsilva.lojitas.ui.components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -16,6 +17,7 @@ fun BottomNavigationComponent(
     onNavigateTo: (String) -> Unit
 ) {
     NavigationBar {
+
         NavigationBarItem(
             icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
             label = { Text("Home") },
@@ -26,18 +28,28 @@ fun BottomNavigationComponent(
                 }
             }
         )
-    }
 
-    NavigationBar {
         NavigationBarItem(
-            icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = "Home") },
-            label = { Text("Home") },
-            selected = currentRoute == Routes.HOME,
+            icon = { Icon(Icons.Default.Search, contentDescription = "Pesquisar") },
+            label = { Text("Buscar") },
+            selected = currentRoute?.startsWith("search") == true,
             onClick = {
-                if (currentRoute != Routes.HOME) {
-                    onNavigateTo(Routes.HOME)
+                if (currentRoute?.startsWith("search") != true) {
+                    onNavigateTo(Routes.criarRotaPesquisa(" "))
                 }
             }
         )
+
+        NavigationBarItem(
+            icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = "Minhas Compras") },
+            label = { Text("Pedidos") },
+            selected = currentRoute == Routes.ORDERS,
+            onClick = {
+                if (currentRoute != Routes.ORDERS) {
+                    onNavigateTo(Routes.ORDERS)
+                }
+            }
+        )
+
     }
 }
