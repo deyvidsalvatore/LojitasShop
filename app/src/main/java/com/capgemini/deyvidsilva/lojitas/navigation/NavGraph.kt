@@ -14,6 +14,7 @@ import androidx.navigation.navArgument
 import com.capgemini.deyvidsilva.lojitas.domain.entity.CarrinhoItem
 import com.capgemini.deyvidsilva.lojitas.domain.entity.Produto
 import com.capgemini.deyvidsilva.lojitas.ui.components.CartModalComponent
+import com.capgemini.deyvidsilva.lojitas.ui.screens.CheckoutScreen
 import com.capgemini.deyvidsilva.lojitas.ui.screens.DetailsScreen
 import com.capgemini.deyvidsilva.lojitas.ui.screens.SearchScreen
 import com.capgemini.deyvidsilva.lojitas.ui.screens.SplashScreen
@@ -89,7 +90,11 @@ fun LojitasNavGraph(navController: NavHostController) {
         }
 
         composable(route = Routes.CHECKOUT) {
-            // CheckoutScreen(navController = navController)
+            CheckoutScreen(
+                navController = navController,
+                itensCarrinho = carrinhoItens,
+                onClearCart = { carrinhoItens.clear() }
+            )
         }
 
         composable(route = Routes.ORDERS) {
