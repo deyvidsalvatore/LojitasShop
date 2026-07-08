@@ -16,6 +16,7 @@ import com.capgemini.deyvidsilva.lojitas.domain.entity.Produto
 import com.capgemini.deyvidsilva.lojitas.ui.components.CartModalComponent
 import com.capgemini.deyvidsilva.lojitas.ui.screens.CheckoutScreen
 import com.capgemini.deyvidsilva.lojitas.ui.screens.DetailsScreen
+import com.capgemini.deyvidsilva.lojitas.ui.screens.OrdersScreen
 import com.capgemini.deyvidsilva.lojitas.ui.screens.SearchScreen
 import com.capgemini.deyvidsilva.lojitas.ui.screens.SplashScreen
 import com.capgemini.deyvidsilva.lojitas.ui.screens.home.HomeScreen
@@ -98,7 +99,7 @@ fun LojitasNavGraph(navController: NavHostController) {
         }
 
         composable(route = Routes.ORDERS) {
-            // OrdersScreen(navController = navController)
+            OrdersScreen(navController = navController)
         }
     }
 }
